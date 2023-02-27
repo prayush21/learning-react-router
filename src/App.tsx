@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { Link, Route, Routes } from "react-router-dom";
+import BookRoutes from "./BookRoutes";
+import Book from "./pages/Book";
+import BookLayout from "./pages/BookLayout";
 import BookList from "./pages/BookList";
 import Home from "./pages/Home";
 import NewBook from "./pages/NewBook";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -22,8 +26,8 @@ function App() {
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/books" element={<BookList />} />
-        <Route />
+        <Route path="/books/*" element={<BookRoutes />}></Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
